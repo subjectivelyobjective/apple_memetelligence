@@ -12,7 +12,7 @@ It's easier to login meow.
   <img src="Resources/login.png" />
 </p>
 
-#GPLv3.
+## GPLv3.
 1. Anyone can copy, modify and distribute this software.
 2. You have to include the license and copyright notice with each and every distribution.
 3. You can use this software privately.
