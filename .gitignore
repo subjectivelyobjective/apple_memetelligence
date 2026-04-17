@@ -1,7 +1,8 @@
 .DS_Store/
 .private/
 .private/*
-.private2/*
+.private2.workflow/Contents
+.private2*
 Package.resolved
 Info.plist
 *.swp
