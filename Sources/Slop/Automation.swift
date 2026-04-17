@@ -17,18 +17,19 @@ func isBrowser(appName: String) -> Bool {
 
 @MainActor
 func clickExistingUser() async throws {
+    let login = try? await SwiftAutoGUI.locateonScreen("Resources/login.png")
     if let existing = try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png") {
         existing = async(operation: { Sendable }) {
         await (
             SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
-            let point = CGRect?(x: existing.midX, y: existing.midY)
             let mid = CGRect?(x: existing.midX, y: existing.midY)
-            Action.move(to: existing)
+            let login = CGRect?(x: login.midX, y: login.midY)
+            Action.move(to:mid)
             Action.click(point)
             .write(Config.username)
             .keyShortcut([.returnKey])
             .write(Config.pw)
-            .move(to: mid)
+            .move(to: login)
         )
     }
     
