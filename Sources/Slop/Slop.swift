@@ -12,15 +12,16 @@ await [Action.clickAt(existing).write(Config.username),
 existing = CGPoint(x: existing.midX, y: existing.midY)
   
 private enum Config { 
-  static let username = "cymbalta"
-  static let pw = "bigly"                                                                                           
-  static let preferredBrowser = "Safari"
+    static let username = "cymbalta"
+    static let pw = "bigly"                                                                                           
+    static let preferredBrowser = "Safari"
 }                                        
 
 func runAppleScript(_ source: String) -> String? {
             try? SwiftAutoGUI.executeAppleScript(source)
 }
-  func isBrowser(appName: String) -> Bool {
+       
+func isBrowser(appName: String) -> Bool {
   appName == Config.preferredBrowser                    
 }
   @MainActor            
