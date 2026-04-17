@@ -1,9 +1,6 @@
 import Foundation
 import SwiftAutoGUI
 
-let NON_EXIT: Int = 0
-let EXIT = 1
-
 private enum Config {
     static let username = "cymbalta"
     static let pw = "bigly"
@@ -26,8 +23,8 @@ public func lovingMyself() async {
     if let existing =
         try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png", confidence: 0.75) {
             let actions: [Action] = [
-                .wait(0.5),
-                .move(to: CGPoint(login.midX, login.midY)),
+                Action.wait(0.5)
+                .move(to: CGPoint(x: (login.x / 2), y:(login.y /2))),
                 .leftClick,
                 .write("cymbalta")
             ];
@@ -35,18 +32,15 @@ public func lovingMyself() async {
             await actions.execute()
 
             let typing = [Action] = [
-                .wait(0.5),
-                .move(to: CGPoint(existing_user.midX, existing_user.midY)),
-                .leftClick,
+                .Action.wait(0.5)
+                .move(to: CGPoint(existing_user.x / 2, existing_user.y / 2)),
                 .wait(0.3),
-                .leftClick
             ];
 
             await typing.execute()
-
+            await SwiftAutoGUI.doubleclick()
             print(existing)
     } else {
-
         print(String("stop stop stop."))
     }
 }
