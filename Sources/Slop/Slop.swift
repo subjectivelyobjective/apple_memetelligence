@@ -6,7 +6,7 @@ let EXIT = 1
 
 private enum Config {
     static let username = "cymbalta"
-    static let pw = ""
+    static let pw = "biglyalgebra04!"
     static let preferredBrowser = "Safari"
 }
 
@@ -20,18 +20,23 @@ func isBrowser(appName: String) -> Bool {
 
 @MainActor
 func ❤️() async -> Int {
-    let login = try? await SwiftAutoGUI.locateonScreen("Resources/login.png")
+    let login =
+        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png")
+
     if let existing =
         try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
         {
         let actions: [Action] = [
-            .move(to: CGPoint(x: existing.midX, y: existing.midY)),
-            .wait(0.4),
-            .doubleClick,
-            .write(username),
+
+            .doubleClick(   at positionCGPoint(
+                                x: existing.x / 2,
+                                y: existing.y / 2),
+                            button: MouseButton = .left)
+            .write(Config.username),
             .keyShortcut([.returnKey]),
             .wait(0.45),
-            .move(to: CGPoint(x: login.midX, login.midY)),
+            .write(Config.pw)
+            .move(to: CGPoint(x: (login.x / 2), y: (login.y / 2))),
             .wait(0.3),
             .leftClick,
         ]
@@ -39,7 +44,8 @@ func ❤️() async -> Int {
 
         return EXIT
     } else {
-        print "lol wtf m8"
         return NON_EXIT
     }
 }
+
+//(await ❤️)
