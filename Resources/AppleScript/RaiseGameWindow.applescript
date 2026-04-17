@@ -1,4 +1,4 @@
-// GPLv3.
+(*GPLv3.
 // 1. Anyone can copy, modify and distribute this software.
 // 2. You have to include the license and copyright notice with each and every distribution.
 // 3. You can use this software privately.
@@ -8,7 +8,7 @@
 //7. Any modifications of this code base MUST be distributed with the same license, GPLv3.
 // 8. This software is provided without warranty.
 // 9. The software author or license can not be held liable for any damages inflicted by the software.
-// 10. I like my girlfriend's feet.
+// 10. I like my girlfriend's feet.*)
 
 tell application "System Events"
     tell process "Safari"
