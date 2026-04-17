@@ -1,11 +1,11 @@
 # apple_memetelligence
-You are only allowed to used this script for good.
+You are only allowed to used this script for good, or evil idc
 
 Do not use your Mac's intellegence for evil, ok?
 
 Fuck Trump
 Fuck pedos
-Epstein did not self log out.
+Epstein did not self log out
 
 It's easier to login meow.
 <p align="center">
