@@ -1,4 +1,6 @@
 .DS_Store/
+.private/
+.private/*
 Package.resolved
 Info.plist
 *.swp
