@@ -1,0 +1,44 @@
+name: Deploy DocC
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.0.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v6
+      - name: build docc
+        run: |
+          # Generate documentation using xcodebuild to properly handle OpenCV dependency
+          xcodebuild docbuild \
+          -scheme SwiftAutoGUI \
+          -derivedDataPath ./DerivedData \
+          -destination 'platform=macOS'
+          
+          # Transform the documentation archive for static hosting
+          $(xcrun --find docc) process-archive \
+          transform-for-static-hosting ./DerivedData/Build/Products/Debug/SwiftAutoGUI.doccarchive \
+          --hosting-base-path SwiftAutoGUI \
+          --output-path ./docs
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
