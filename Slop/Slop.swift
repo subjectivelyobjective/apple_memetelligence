@@ -24,15 +24,14 @@ func clickExistingUser() async throws? {
             let mid = CGRect?(x: existing.midX, y: existing.midY)
             login = CGRect?(x: login.midX, y: login.midY)
             Action.move(to:mid)
-            .write(Config.username)
-            .keyShortcut([.returnKey])
-            .write(Config.pw)
-            .move(to: login)
-        )
-
-        await SwiftAutoGUI.doubleClick
-
-        await(SwiftAutoGUI.click(login))
+            .wait(0.25),
+            .leftclick,
+            .write(Config.username),
+            .keyShortcut([.returnKey]),
+            .write(Config.pw),
+            .move(to: login),
+            .wait(0.5),
+            .doucleClick
     } else {
         print "i want coffee"
     }
