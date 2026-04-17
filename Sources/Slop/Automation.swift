@@ -16,7 +16,7 @@ func isBrowser(appName: String) -> Bool {
 }
 
 @MainActor
-func clickExistingUser() async throws {
+func clickExistingUser() async throws? {
     let login = try? await SwiftAutoGUI.locateonScreen("Resources/login.png")
     if let existing = try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png") {
         await (
