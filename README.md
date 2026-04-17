@@ -9,7 +9,7 @@ Epstein did not self log out
 
 It's easier to login meow.
 <p align="center">
-  <img src="Resources/login.png" />
+  <img src="Resources/Images/login.png" />
 </p>
 
 ## GPLv3.
