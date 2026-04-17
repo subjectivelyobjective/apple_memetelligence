@@ -19,7 +19,6 @@ func isBrowser(appName: String) -> Bool {
 func clickExistingUser() async throws {
     let login = try? await SwiftAutoGUI.locateonScreen("Resources/login.png")
     if let existing = try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png") {
-        existing = async(operation: { Sendable }) {
         await (
             SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
             let mid = CGRect?(x: existing.midX, y: existing.midY)
@@ -31,7 +30,7 @@ func clickExistingUser() async throws {
             .write(Config.pw)
             .move(to: login)
         )
+    } else {
+        print "i want coffee"
     }
-    
-    await(existing)
 }
