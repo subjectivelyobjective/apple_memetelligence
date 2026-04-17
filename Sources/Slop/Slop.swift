@@ -6,7 +6,7 @@ let EXIT = 1
 
 private enum Config {
     static let username = "cymbalta"
-    static let pw = "biglyalgebra04!"
+    static let pw = "bigly"
     static let preferredBrowser = "Safari"
 }
 
@@ -19,33 +19,34 @@ func isBrowser(appName: String) -> Bool {
 }
 
 @MainActor
-func ❤️() async -> Int {
+public func lovingMyself() async {
     let login =
-        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png")
+        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png", confidence: 0.75)
 
     if let existing =
-        try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
-        {
-        let actions: [Action] = [
+        try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png", confidence: 0.75) {
+            let actions: [Action] = [
+                .wait(0.5),
+                .move(to: CGPoint(login.midX, login.midY)),
+                .leftClick,
+                .write("cymbalta")
+            ];
 
-            .doubleClick(   at positionCGPoint(
-                                x: existing.x / 2,
-                                y: existing.y / 2),
-                            button: MouseButton = .left)
-            .write(Config.username),
-            .keyShortcut([.returnKey]),
-            .wait(0.45),
-            .write(Config.pw)
-            .move(to: CGPoint(x: (login.x / 2), y: (login.y / 2))),
-            .wait(0.3),
-            .leftClick,
-        ]
-        await actions.execute()
+            await actions.execute()
 
-        return EXIT
+            let typing = [Action] = [
+                .wait(0.5),
+                .move(to: CGPoint(existing_user.midX, existing_user.midY)),
+                .leftClick,
+                .wait(0.3),
+                .leftClick
+            ];
+
+            await typing.execute()
+
+            print(existing)
     } else {
-        return NON_EXIT
+
+        print(String("stop stop stop."))
     }
 }
-
-//(await ❤️)
