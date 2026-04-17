@@ -12,8 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .executable(
             name: "Slop",
-            targets: ["Slop"],
-            version: "v0.6.7"
+            targets: ["Slop"]
         ),
     ],
     dependencies: [

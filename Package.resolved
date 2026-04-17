@@ -1,0 +1,24 @@
+{
+  "originHash" : "4529e2cb2b39266373d59ce62ac19c3ff1545365ad3958ec753ea6334eeff8c7",
+  "pins" : [
+    {
+      "identity" : "opencv-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yeatse/opencv-spm.git",
+      "state" : {
+        "revision" : "151a5374946aa867ff3892e0d69fd85e1ecdaf2e",
+        "version" : "4.13.0"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "626b5b7b2f45e1b0b1c6f4a309296d1d21d7311b",
+        "version" : "1.7.1"
+      }
+    }
+  ],
+  "version" : 3
+}
