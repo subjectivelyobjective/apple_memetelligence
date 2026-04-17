@@ -10,5 +10,8 @@ GPLv3
 8. This software is provided without warranty.
 9. The software author or license can not be held liable for any damages inflicted by the software.
 10. I like my girlfriend's feet.
-type "hi bby"
 *)
+tell application "System Events"
+	set textToType to "cymbalta"
+	key code 49
+end tell
