@@ -7,7 +7,7 @@ Fuck Sapphirus btw.
 Fuck Trump
 Fuck pedos.
 
-Login...
+It's easier to login meow.
 <p align="center">
   <img src="Resources/login.png" />
 </p>
