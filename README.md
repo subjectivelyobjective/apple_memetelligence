@@ -6,3 +6,5 @@ Do not use your Mac's intellegence for evil, ok?
 Fuck Sapphirus btw.
 Fuck Trump
 Fuck pedos.
+
+[center]![Image](Resources/login.png)[/center]
