@@ -7,4 +7,7 @@ Fuck Sapphirus btw.
 Fuck Trump
 Fuck pedos.
 
-[center]![Image](Resources/login.png)[/center]
+Login...
+<p align="center">
+  <img src="Resources/login.png" />
+</p>
