@@ -30,7 +30,7 @@ func isBrowser(appName: String) -> Bool {
 @MainActor
 public func lovingMyself() async {
     let login =
-        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png", confidence: 0.8)
+        try? await SwiftAutoGUI.locateOnScreen("Resources/Images/login.png", confidence: 0.8)
             print(login)
 
             let actions: [Action] = [
@@ -41,7 +41,7 @@ public func lovingMyself() async {
             await actions.execute()
 
             if let existing =
-                try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png", confidence: 0.8) {
+                try? await SwiftAutoGUI.locateOnScreen("Resources/Images/existing_user.png", confidence: 0.8) {
                     let x_coord: Int = login?!.x
                     let y_coord: Int = login?!.y
 
