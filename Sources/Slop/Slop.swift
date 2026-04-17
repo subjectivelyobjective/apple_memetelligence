@@ -2,7 +2,7 @@ import Foundation
 import SwiftAutoGUI
 
 private enum Config {
-    static let username = "cymbalta"
+    static let user: String = "cymbalta"
     static let pw = "bigly"
     static let preferredBrowser = "Safari"
 }
@@ -18,29 +18,30 @@ func isBrowser(appName: String) -> Bool {
 @MainActor
 public func lovingMyself() async {
     let login =
-        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png", confidence: 0.75)
+        try? await SwiftAutoGUI.locateOnScreen("Resources/login.png", confidence: 0.8)
+            print(login)
 
-    if let existing =
-        try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png", confidence: 0.75) {
             let actions: [Action] = [
-                Action.wait(0.5)
-                .move(to: CGPoint(x: (login.x / 2), y:(login.y /2))),
-                .leftClick,
-                .write("cymbalta")
-            ];
+                //.move(to: loginPt),
+                .write(Config.user)
+            ]
 
             await actions.execute()
 
-            let typing = [Action] = [
-                .Action.wait(0.5)
-                .move(to: CGPoint(existing_user.x / 2, existing_user.y / 2)),
-                .wait(0.3),
-            ];
+            if let existing =
+                try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png", confidence: 0.8) {
+                    let x_coord: Int = login?!.x
+                    let y_coord: Int = login?!.y
 
-            await typing.execute()
-            await SwiftAutoGUI.doubleclick()
-            print(existing)
-    } else {
-        print(String("stop stop stop."))
-    }
+                    let typing: [Action] = [
+                        .move(to: CGPoint(x: x_coord, y: y_coord))
+                        .leftClick,
+                        .keyShortcut([.returnKey])
+                ]
+                //.keyShortcut([.returnKey])
+            } else {
+                print(String("lol"))
+            }
 }
+
+//: CGPoint(x: login.midX, y: login.midY)),
