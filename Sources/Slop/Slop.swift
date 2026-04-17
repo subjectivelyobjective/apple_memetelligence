@@ -1,6 +1,9 @@
 import Foundation
 import SwiftAutoGUI
 
+let NON_EXIT: Int = 0
+let EXIT = 1
+
 private enum Config {
     static let username = "cymbalta"
     static let pw = ""
@@ -16,23 +19,27 @@ func isBrowser(appName: String) -> Bool {
 }
 
 @MainActor
-func clickExistingUser() async throws? {
+func ❤️() async -> Int {
     let login = try? await SwiftAutoGUI.locateonScreen("Resources/login.png")
-    if let existing = try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png") {
-        await (
-            SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
-            let mid = CGRect?(x: existing.midX, y: existing.midY)
-            login = CGRect?(x: login.midX, y: login.midY)
-            Action.move(to:mid)
-            .wait(0.25),
-            .leftclick,
-            .write(Config.username),
+    if let existing =
+        try? await SwiftAutoGUI.locateOnScreen("Resources/existing_user.png")
+        {
+        let actions: [Action] = [
+            .move(to: CGPoint(x: existing.midX, y: existing.midY)),
+            .wait(0.4),
+            .doubleClick,
+            .write(username),
             .keyShortcut([.returnKey]),
-            .write(Config.pw),
-            .move(to: login),
-            .wait(0.5),
-            .doucleClick
+            .wait(0.45),
+            .move(to: CGPoint(x: login.midX, login.midY)),
+            .wait(0.3),
+            .leftClick,
+        ]
+        await actions.execute()
+
+        return EXIT
     } else {
-        print "i want coffee"
+        print "lol wtf m8"
+        return NON_EXIT
     }
 }
